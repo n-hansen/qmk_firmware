@@ -17,7 +17,7 @@ enum custom_keycodes {
 };
 
 // Shortcut to make keymap more readable
-#define QWERTY_L TO(_QUERTY)
+#define QWERTY_L TO(_QWERTY)
 #define SYM_L   TO(_SYMB)
 #define SYM_ALT LM(_SYMB, MOD_LALT)
 #define ADJUST_L TO(_ADJUST)
