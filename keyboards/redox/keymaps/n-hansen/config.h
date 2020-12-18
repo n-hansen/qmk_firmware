@@ -27,10 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #undef RGBLED_NUM
-//#define RGBLIGHT_ANIMATIONS
-#define RGBLIGHT_RAINBOW_MOOD
-#define RGBLIGHT_RAINBOW_SWIRL
 #define RGBLED_NUM 14
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_LAYERS
+#define RGBLIGHT_MAX_LAYERS 4
+//#define RGBLIGHT_ANIMATIONS
+//#define RGBLIGHT_RAINBOW_MOOD
+//#define RGBLIGHT_RAINBOW_SWIRL
+//#define RGBLIGHT_HUE_STEP 8
+//#define RGBLIGHT_SAT_STEP 8
+//#define RGBLIGHT_VAL_STEP 8

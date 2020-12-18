@@ -94,3 +94,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   )
 };
+
+
+// LIGHT LAYER STUFF
+
+const rgblight_segment_t PROGMEM my_qwerty_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 14, HSV_MAGENTA}
+);
+
+const rgblight_segment_t PROGMEM my_symb_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 14, HSV_SPRINGGREEN}
+);
+
+const rgblight_segment_t PROGMEM my_nav_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 14, HSV_BLUE}
+);
+
+const rgblight_segment_t PROGMEM my_adjust_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 14, HSV_GOLDENROD}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_qwerty_light_layer,
+    my_symb_light_layer,
+    my_nav_light_layer,
+    my_adjust_light_layer
+);
+
+void keyboard_post_init_user(void) {
+  // Enable LED layers
+  rgblight_layers = my_rgb_layers;
+};
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
+  rgblight_set_layer_state(_SYMB, layer_state_cmp(state, _SYMB));
+  rgblight_set_layer_state(_NAV, layer_state_cmp(state, _NAV));
+  rgblight_set_layer_state(_ADJUST, layer_state_cmp(state, _ADJUST));
+  return state;
+};
