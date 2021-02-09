@@ -6,21 +6,22 @@
 // entirely and just use numbers.
 #define _QWERTY 0
 #define _SYMB 1
-#define _NAV 2
-#define _ADJUST 3
+#define _QUD_KP 2
+#define _QUD_QWERTY 3
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   SYMB,
-  NAV,
-  ADJUST,
+  QUD_KP,
+  QUD_QWERY,
 };
 
 // Shortcut to make keymap more readable
 #define QWERTY_L TO(_QWERTY)
 #define SYM_L   TO(_SYMB)
 #define SYM_ALT LM(_SYMB, MOD_LALT)
-#define ADJUST_L TO(_ADJUST)
+#define QUD_KP_L TO(_QUD_KP)
+#define QUD_Q_L TO(_QUD_QWERTY)
 
 #define KC_ALAS LALT_T(KC_PAST)
 #define KC_CTPL LCTL_T(KC_BSLS)
@@ -54,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYMB] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_ESC  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,ADJUST_L,
+     KC_ESC  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,QUD_KP_L,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,KC_EXLM ,KC_AT   ,KC_LCBR ,KC_RCBR ,KC_UNDS ,_______ ,                          _______ ,KC_CIRC ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PMNS ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -66,31 +67,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
-  [_NAV] = LAYOUT(
+  [_QUD_KP] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
+     KC_EQL  ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,QWERTY_L,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,KC_MS_U ,XXXXXXX ,KC_WH_U ,XXXXXXX ,_______ ,                          _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,KC_HOME ,                          KC_PGUP ,KC_P7   ,KC_P8   ,KC_P9   ,KC_PAST ,KC_PSLS ,KC_BSLASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,KC_MS_L ,KC_MS_D ,KC_MS_R ,KC_WH_D ,XXXXXXX ,_______ ,                          _______ ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RIGHT,XXXXXXX ,XXXXXXX ,
+     LCT_ESC ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,KC_END  ,                          KC_PGDN ,KC_P4   ,KC_P5   ,KC_P6   ,KC_L    ,QUD_Q_L ,KC_QUOT ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,_______ ,        _______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_DEL  ,KC_LCTL ,        KC_RCTL ,KC_TAB  ,KC_P1   ,KC_P2   ,KC_P3   ,KC_PMNS ,KC_PPLS ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     KC_BTN1 ,    KC_BTN2 ,_______ ,        _______ ,_______ ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+     KC_GRV  ,XXXXXXX ,XXXXXXX ,KC_LWIN ,     KC_LOPT ,    KC_SPC  ,KC_BSPC ,        KC_PENT ,KC_SPC  ,    KC_P0   ,     KC_PDOT ,KC_DOWN ,KC_UP   ,KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
-  [_ADJUST] = LAYOUT(
+  [_QUD_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     XXXXXXX ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,XXXXXXX ,
+     KC_EQL  ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0    ,QWERTY_L,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,RGB_M_P ,RGB_TOG ,RGB_MOD ,RGB_HUD ,RGB_HUI ,                          RGB_SAD ,RGB_SAI ,RGB_VAD ,RGB_VAI ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,KC_HOME ,                          KC_PGUP ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_BSLASH,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     QWERTY_L,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     LCT_ESC ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,KC_END  ,                          KC_PGDN ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,QUD_KP_L,KC_QUOT ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,_______ ,XXXXXXX ,        XXXXXXX ,_______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,KC_DEL  ,KC_LCTL ,        KC_RCTL ,KC_TAB  ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX
+     KC_GRV  ,XXXXXXX ,XXXXXXX ,KC_LWIN ,     KC_LOPT ,    KC_SPC  ,KC_BSPC ,        KC_ENT  ,KC_SPC  ,    KC_RCTL ,     KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   )
 };
@@ -106,19 +107,19 @@ const rgblight_segment_t PROGMEM my_symb_light_layer[] = RGBLIGHT_LAYER_SEGMENTS
     {0, 14, HSV_SPRINGGREEN}
 );
 
-const rgblight_segment_t PROGMEM my_nav_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM my_qud_kp_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 14, HSV_BLUE}
 );
 
-const rgblight_segment_t PROGMEM my_adjust_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 14, HSV_GOLDENROD}
+const rgblight_segment_t PROGMEM my_qud_qwerty_light_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 14, HSV_CYAN}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_qwerty_light_layer,
     my_symb_light_layer,
-    my_nav_light_layer,
-    my_adjust_light_layer
+    my_qud_kp_light_layer,
+    my_qud_qwerty_light_layer
 );
 
 void keyboard_post_init_user(void) {
@@ -129,7 +130,7 @@ void keyboard_post_init_user(void) {
 layer_state_t layer_state_set_user(layer_state_t state) {
   rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
   rgblight_set_layer_state(_SYMB, layer_state_cmp(state, _SYMB));
-  rgblight_set_layer_state(_NAV, layer_state_cmp(state, _NAV));
-  rgblight_set_layer_state(_ADJUST, layer_state_cmp(state, _ADJUST));
+  rgblight_set_layer_state(_QUD_KP, layer_state_cmp(state, _QUD_KP));
+  rgblight_set_layer_state(_QUD_QWERTY, layer_state_cmp(state, _QUD_QWERTY));
   return state;
 };
